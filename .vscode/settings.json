@@ -4,8 +4,7 @@
     "python-envs.pythonProjects": [],
     
     // Configuration de l'environnement Python par défaut
-    "python.defaultInterpreterPath": "C:\\Users\\BrahimElBouhali\\anaconda3\\envs\\transcriptomics\\python.exe",
-    "python.terminal.activateEnvironment": true,
+    "python.defaultInterpreterPath": "C:\\Users\\BrahimElBouhali\\anaconda3\\envs\\tcga_tf\\python.exe",
     "python.terminal.activateEnvInCurrentTerminal": true,
     "jupyter.notebookFileRoot": "${workspaceFolder}",
     
@@ -13,8 +12,8 @@
     "python.condaPath": "C:\\Users\\BrahimElBouhali\\anaconda3\\Scripts\\conda.exe",
     
     // Configuration Jupyter - Kernel par défaut
-    "jupyter.kernels.preferredKernelId": "transcriptomics",
-    
-    // Terminal - Désactiver l'activation automatique pour éviter les erreurs
-    "python.terminal.activateEnvironment": false
+    "jupyter.kernels.preferredKernelId": "tcga_tf",
+
+    // Terminal - Activer l'environnement automatiquement
+    "python.terminal.activateEnvironment": true
 }

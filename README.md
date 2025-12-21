@@ -72,6 +72,33 @@ TCGA_UCEC_project/
 
 ## Environnement technique
 
+### Python (Conda)
+
+Par défaut, ce projet utilise l'environnement conda **`tcga_tf`** (et son noyau Jupyter associé).
+
+Pourquoi VS Code ne le “propose” pas toujours ?
+- Un **environnement conda** n'est pas automatiquement un **noyau Jupyter**.
+- Pour qu'il apparaisse dans la liste des noyaux, il faut installer **`ipykernel`** dans l'env et enregistrer un **kernelspec**.
+
+Commandes (Windows / PowerShell) :
+
+```powershell
+# Créer l'env (si besoin)
+conda create -n tcga_tf python=3.10 -y
+
+# Installer le noyau Jupyter dans l'env
+conda run -n tcga_tf python -m pip install ipykernel
+
+# Enregistrer le noyau pour VS Code/Jupyter
+conda run -n tcga_tf python -m ipykernel install --user --name tcga_tf --display-name "Python (tcga_tf)"
+```
+
+Dans VS Code :
+- `Python: Select Interpreter` → choisir **tcga_tf**
+- Dans un notebook → `Select Kernel` → **Python (tcga_tf)**
+
+Note : le repo contient une config projet VS Code dans `.vscode/settings.json` qui pointe sur `tcga_tf`.
+
 **Python** (3.8+) :
 - pandas
 - numpy
