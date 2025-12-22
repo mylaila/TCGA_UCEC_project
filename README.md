@@ -74,30 +74,42 @@ TCGA_UCEC_project/
 
 ### Python (Conda)
 
-Par défaut, ce projet utilise l'environnement conda **`tcga_tf`** (et son noyau Jupyter associé).
+Ce projet utilise l'environnement conda **`tcga_tf`** comme environnement par défaut pour tous les notebooks.
 
-Pourquoi VS Code ne le “propose” pas toujours ?
-- Un **environnement conda** n'est pas automatiquement un **noyau Jupyter**.
-- Pour qu'il apparaisse dans la liste des noyaux, il faut installer **`ipykernel`** dans l'env et enregistrer un **kernelspec**.
-
-Commandes (Windows / PowerShell) :
+#### Configuration de l'environnement
 
 ```powershell
-# Créer l'env (si besoin)
+# Créer l'environnement (si besoin)
 conda create -n tcga_tf python=3.10 -y
 
-# Installer le noyau Jupyter dans l'env
-conda run -n tcga_tf python -m pip install ipykernel
+# Activer l'environnement
+conda activate tcga_tf
+
+# Installer le noyau Jupyter dans l'environnement
+python -m pip install ipykernel
 
 # Enregistrer le noyau pour VS Code/Jupyter
-conda run -n tcga_tf python -m ipykernel install --user --name tcga_tf --display-name "Python (tcga_tf)"
+python -m ipykernel install --user --name tcga_tf --display-name "tcga_tf"
 ```
 
-Dans VS Code :
-- `Python: Select Interpreter` → choisir **tcga_tf**
-- Dans un notebook → `Select Kernel` → **Python (tcga_tf)**
+#### Utilisation dans VS Code
 
-Note : le repo contient une config projet VS Code dans `.vscode/settings.json` qui pointe sur `tcga_tf`.
+**Pour les notebooks** :
+- Tous les notebooks du projet utilisent automatiquement le kernel **`tcga_tf`**
+- Pour vérifier/changer le kernel : cliquer sur le sélecteur de kernel en haut à droite du notebook → choisir **tcga_tf**
+
+**Pour les terminaux** :
+- Avant de lancer des commandes Python dans le terminal, activer l'environnement :
+  ```powershell
+  conda activate tcga_tf
+  ```
+- Cette activation est nécessaire pour chaque nouvelle session de terminal
+
+**Configuration du projet** :
+- Le fichier `.vscode/settings.json` configure automatiquement l'interpréteur Python sur `tcga_tf`
+- Tous les notebooks sont configurés avec le kernel `tcga_tf` par défaut
+
+### Dépendances
 
 **Python** (3.8+) :
 - pandas
@@ -106,6 +118,7 @@ Note : le repo contient une config projet VS Code dans `.vscode/settings.json` q
 - seaborn
 - scipy
 - scikit-learn
+- tensorflow
 
 **R** (4.0+) :
 - DESeq2
