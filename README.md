@@ -1,4 +1,4 @@
-# Analyse transcriptomique TCGA-UCEC
+# Analyse transcriptomique TCGA-UCEC.
 
 Projet M2 AIDA – Analyse différentielle de l'expression génique dans le cancer de l'endomètre  
 (*Uterine Corpus Endometrial Carcinoma, TCGA-UCEC*)
