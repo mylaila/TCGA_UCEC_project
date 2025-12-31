@@ -1,65 +1,81 @@
-import json
-from pathlib import Path
+# ============================================================
+# TCGA-UCEC: Download STAR-Counts + clinical metadata (GDC)
+# ============================================================
 
-KERNEL_NAME = "tcga_tf"
-DISPLAY_NAME = "Python (tcga_tf)"
-LANGUAGE = "python"
+library(TCGAbiolinks)
+library(SummarizedExperiment)
+library(dplyr)
+library(readr)
+library(tibble)
 
+# ---- Configuration des Chemins ----
+# On cible directement le dossier data/raw du projet
+out_dir <- file.path("data", "raw")
+if (!dir.exists(out_dir)) {
+  dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
+}
 
-def update_notebook(path: Path) -> bool:
-    data = json.loads(path.read_text(encoding="utf-8"))
+project <- "TCGA-UCEC"
+workflow_type <- "STAR - Counts"
 
-    # Ensure minimal required keys exist
-    if "cells" not in data:
-        data["cells"] = []
+# ---- Query + Download + Prepare ----
+message("✅ Connexion au GDC en cours...")
+query <- GDCquery(
+  project = project,
+  data.category = "Transcriptome Profiling",
+  data.type = "Gene Expression Quantification",
+  workflow.type = workflow_type
+)
 
-    # Notebook-level metadata
-    metadata = data.get("metadata") or {}
-    metadata["kernelspec"] = {
-        "display_name": DISPLAY_NAME,
-        "language": LANGUAGE,
-        "name": KERNEL_NAME,
-    }
-    metadata.setdefault("language_info", {"name": LANGUAGE})
-    if isinstance(metadata.get("language_info"), dict):
-        metadata["language_info"].setdefault("name", LANGUAGE)
+message("✅ Téléchargement des données (GDC)...")
+GDCdownload(query)
+se <- GDCprepare(query)
 
-    data["metadata"] = metadata
+# ---- Extraction des counts (gènes x échantillons) ----
+counts <- assay(se)
 
-    # Standard nbformat fields (safe defaults)
-    data.setdefault("nbformat", 4)
-    data.setdefault("nbformat_minor", 5)
+# ---- Annotation des gènes ----
+row_annot <- as.data.frame(rowData(se))
+gene_annot <- row_annot %>%
+  transmute(
+    ensembl_gene_id = gene_id,
+    gene_symbol     = gene_name,
+    gene_type       = gene_type
+  ) %>%
+  distinct()
 
-    original = path.read_text(encoding="utf-8")
-    updated = json.dumps(data, ensure_ascii=False, indent=4) + "\n"
+# ---- Métadonnées cliniques ----
+col_meta <- as.data.frame(colData(se))
+clinical <- GDCquery_clinic(project = project, type = "clinical")
 
-    if updated != original:
-        path.write_text(updated, encoding="utf-8")
-        return True
+sample_barcode <- colnames(counts)
+patient_barcode <- substr(sample_barcode, 1, 12)
 
-    return False
+meta <- col_meta %>%
+  mutate(
+    sample_barcode = sample_barcode,
+    patient_barcode = patient_barcode
+  )
 
+# Filtrage : Tumeurs primaires uniquement (code "01")
+sample_type_code <- substr(meta$sample_barcode, 14, 15)
+keep <- sample_type_code == "01"
+counts <- counts[, keep, drop = FALSE]
+meta <- meta[keep, , drop = FALSE]
 
-def main() -> int:
-    project_root = Path(__file__).resolve().parents[1]
-    notebooks = [
-        p
-        for p in project_root.rglob("*.ipynb")
-        if ".ipynb_checkpoints" not in p.parts
-    ]
+# Fusion avec les données cliniques
+meta_final <- meta %>%
+  left_join(clinical, by = c("patient_barcode" = "submitter_id"))
 
-    changed = []
-    for nb in sorted(notebooks):
-        if update_notebook(nb):
-            changed.append(nb)
+# ---- Export pour Python (Orientation: Samples x Genes) ----
+counts_t <- t(counts)
+counts_df <- as.data.frame(counts_t) %>% 
+  tibble::rownames_to_column("sample_barcode")
 
-    print(f"Found {len(notebooks)} notebooks")
-    print(f"Updated {len(changed)} notebooks")
-    for p in changed:
-        print(f" - {p.relative_to(project_root)}")
+message("✅ Sauvegarde des fichiers dans data/raw/...")
 
-    return 0
+write_csv(counts_df, file.path(out_dir, "counts_samples_x_genes.csv.gz"))
+write_csv(meta_final, file.path(out_dir, "metadata_clinical_merged.csv.gz"))
+write_csv(gene_annot, file.path(out_dir, "gene_annotation.csv.gz"))
 
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+message("✅ Acquisition terminée avec succès.")
