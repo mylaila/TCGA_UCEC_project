@@ -1,0 +1,7 @@
+# Fichiers et dossiers à ignorer par Git
+.ipynb_checkpoints/
+*.pyc
+__pycache__/
+.env
+.vscode/
+.DS_Store
