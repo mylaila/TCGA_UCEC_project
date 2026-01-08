@@ -1,0 +1,9 @@
+Métrique,Valeur
+Effectif total,553
+Données disponibles récidive,379
+Taux récidive (%),20.2
+Ratio déséquilibre,3.96:1
+Corrélation Décès (ρ),0.479
+AUC prédictive,0.739
+p-value Chi²,1.82e-05
+Délai médian (jours),N/A

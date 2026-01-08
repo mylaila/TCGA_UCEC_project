@@ -1,0 +1,4 @@
+dataset,n_samples,n_features,composition,filepath
+X_combined_multimodal,82,194,189 gènes + 1 grade + 4 FIGO,c:\Z\M2_AIDA\TCGA_UCEC_project\data\processed\ml_ready/X_combined_multimodal.csv.gz
+y_supervised_OS5,82,1,"OS 5 ans (0=Vivant, 1=Décédé)",c:\Z\M2_AIDA\TCGA_UCEC_project\data\processed\ml_ready/y_supervised_OS5.csv
+y_validation_recurrence,82,1,"Récurrence (0=Non, 1=Oui)",c:\Z\M2_AIDA\TCGA_UCEC_project\data\processed\ml_ready/y_validation_recurrence.csv

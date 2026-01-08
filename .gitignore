@@ -5,3 +5,12 @@ __pycache__/
 .env
 .vscode/
 .DS_Store
+
+# Modèles volumineux
+*.keras
+*.h5
+data/models/
+
+# Fichiers de données volumineux
+data/processed/normalized/expr_norm_filtered.csv.gz
+data/processed/tmp_expr_*.csv.gz
