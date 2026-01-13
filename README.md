@@ -102,7 +102,7 @@ pip install tensorflow pandas numpy scipy scikit-learn matplotlib seaborn lifeli
 
 ---
 
-### [0D_ml_mlp.ipynb](0D_ml_mlp.ipynb) *(si applicable)*
+### [0D_ml_supervised_mlp.ipynb](0D_ml_supervised_mlp.ipynb)
 **Modèle MLP supervisé**
 - Entraînement MLP pour prédiction de survie
 - Validation croisée et optimisation hyperparamètres
@@ -113,8 +113,8 @@ pip install tensorflow pandas numpy scipy scikit-learn matplotlib seaborn lifeli
 - Loss : Binary Crossentropy, Optimizer : Adam
 
 **Fichiers d'entrée** :
-- `data/processed/ml_ready/X_supervised.csv`
-- `data/processed/ml_ready/y_target.csv`
+- `data/processed/ml_ready/X_multimodal_n82.csv.gz`
+- `data/processed/ml_ready/y_supervised_OS5.csv`
 
 **Fichiers de sortie** :
 - `data/models/mlp/` (modèles sauvegardés)
