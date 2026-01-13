@@ -3,14 +3,16 @@ Projet M2 d'analyse transcriptomique des données TCGA-UCEC (Uterine Corpus Endo
 
 ## Contributeurs
 
-**Klervi Le Dortz** 
+<br>**Klervi Le Dortz** 
   1.Script_data_download.R / 
   1.visualization.ipynb / 
   4.Autoencoder+kNN_Target=reccurence.ipynb / 
-**Quentin Marandon** 
+  
+<br>**Quentin Marandon** 
   3.QC_norm_scal.py / 
   4.histo_mlp.ipynb / 
-**Laïla EL BOUHALI** 
+
+<br>**Laïla EL BOUHALI** 
   0A_data_acquisition.ipynb / 
   0B_qc_normalization.ipynb / 
   0C_ml_preprocessing.ipynb / 
