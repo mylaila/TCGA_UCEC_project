@@ -1,20 +1,21 @@
 # TCGA_UCEC_project
+Projet M2 d'analyse transcriptomique des données TCGA-UCEC (Uterine Corpus Endometrial Carcinoma - Cancer de l'endomètre) avec apprentissage automatique pour la prédiction de survie à 5 ans.
 
-### Klervi Le Dortz
+## Contributeurs
+
+**Klervi Le Dortz** 
   1.Script_data_download.R / 
   1.visualization.ipynb / 
   4.Autoencoder+kNN_Target=reccurence.ipynb / 
-### Quentin Marandon
+**Quentin Marandon** 
   3.QC_norm_scal.py / 
   4.histo_mlp.ipynb / 
-### Laïla EL BOUHALI 
+**Laïla EL BOUHALI** 
   0A_data_acquisition.ipynb / 
   0B_qc_normalization.ipynb / 
   0C_ml_preprocessing.ipynb / 
   0D_ml_supervised_mlp.ipynb / 
   0E_ml_autoencodeur.ipynb / 
-
-Projet M2 d'analyse transcriptomique des données TCGA-UCEC (Uterine Corpus Endometrial Carcinoma - Cancer de l'endomètre) avec apprentissage automatique pour la prédiction de survie à 5 ans.
 
 ## Vue d'ensemble
 
