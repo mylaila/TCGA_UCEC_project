@@ -2,22 +2,32 @@
 Projet M2 d'analyse transcriptomique des données TCGA-UCEC (Uterine Corpus Endometrial Carcinoma - Cancer de l'endomètre) avec apprentissage automatique pour la prédiction de survie à 5 ans.
 
 ## Contributeurs
+### Analyse principale
+  **Klervi Le Dortz** 
+  <br>  1.Script_data_download.R
 
-**Klervi Le Dortz** 
-<br>  1.Script_data_download.R / 
-<br>  1.visualization.ipynb / 
-<br>  4.Autoencoder+kNN_Target=reccurence.ipynb / 
+  **Laïla EL BOUHALI** 
+  <br>  0A_data_acquisition.ipynb (appel script 1.Script_data_download.R)
+  <br>  0B_qc_normalization.ipynb 
 
-**Quentin Marandon** 
-<br>  3.QC_norm_scal.py / 
-<br>  4.histo_mlp.ipynb / 
+  **Klervi Le Dortz** 
+  <br>  4.Autoencoder+kNN_Target=reccurence.ipynb (Autoencodeur non-supervisé + analyse plus proches voisins)
 
-**Laïla EL BOUHALI** 
-<br>  0A_data_acquisition.ipynb / 
-<br>  0B_qc_normalization.ipynb / 
-<br>  0C_ml_preprocessing.ipynb / 
-<br>  0D_ml_supervised_mlp.ipynb / 
-<br>  0E_ml_autoencodeur.ipynb / 
+  **Quentin Marandon** 
+    <br>  4.histo_mlp.ipynb (MLP supervisé + Target Type histologique)
+
+  **Laïla EL BOUHALI** 
+    <br>  0D_ml_supervised_mlp.ipynb (MLP supervisé + Target Survie à 5 ans)
+
+### Analyses complémentaires
+  **Klervi Le Dortz** 
+  <br>  1.visualization.ipynb
+
+  **Quentin Marandon** 
+  <br>  3.QC_norm_scal.py
+
+  **Laïla EL BOUHALI** 
+  <br>  0E_ml_autoencodeur.ipynb 
 
 ## Vue d'ensemble
 
