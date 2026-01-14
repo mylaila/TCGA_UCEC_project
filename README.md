@@ -19,8 +19,7 @@ Projet M2 d'analyse transcriptomique des données TCGA-UCEC (Uterine Corpus Endo
   **Laïla EL BOUHALI** 
     <br>  0D_ml_supervised_mlp.ipynb (MLP supervisé + Target Survie à 5 ans)
 
-### >>>>>>>>>>>>>>>>>>> Analyse complémentaire >>>>>>>>>>>>>>>>>>> 
-s complémentaires
+### >>>>>>>>>>>>>>>>>>> Analyses summplémentaires >>>>>>>>>>>>>>>>>>> 
   **Klervi Le Dortz** 
   <br>  1.visualization.ipynb
 
