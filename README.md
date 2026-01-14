@@ -1,5 +1,5 @@
 # TCGA_UCEC_project
-Projet M2 d'analyse transcriptomique des données TCGA-UCEC (Uterine Corpus Endometrial Carcinoma - Cancer de l'endomètre) avec apprentissage automatique pour la prédiction de survie à 5 ans.
+Projet M2 d'analyse transcriptomique des données TCGA-UCEC (Uterine Corpus Endometrial Carcinoma - Cancer de l'endomètre) avec apprentissage automatique.
 
 ## Contributeurs
 ### >>>>>>>>>>>>>>>>>>> Analyse principale >>>>>>>>>>>>>>>>>>> 
